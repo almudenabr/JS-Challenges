@@ -1,3 +1,5 @@
 body {
-  background: red;
+  background-image: url("https://img.freepik.com/vector-gratis/escena-granja-naturaleza-granero-espantapajaros_1308-46264.jpg?size=626&ext=jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
