@@ -4,16 +4,14 @@
 
 // add audio and css transition when keydown
 
-function listenKey(e) {
+function playSound(e) {
+  const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
   const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
-  const audio = document.querySelector(`.audio[data-key="${e.keyCode}"]`);
 
-  if (!audio) {
-    return;
-  } else {
-    audio.currentTime = 0; //rewind to the start
-    audio.play();
-  }
+  if (!audio) return; //stop de function from running
+
+  audio.currentTime = 0; //rewind to the start
+  audio.play();
 
   key.classList.add("js-playing");
 }
@@ -21,16 +19,14 @@ function listenKey(e) {
 //remove css transition
 
 function removeTransition(e) {
-  if (e.propertyName !== "transform") {
-    return;
-  } else {
-    this.classList.remove("js-playing");
-  }
+  if (e.propertyName !== "transform") return; //skip it if it's not a transform
+
+  this.classList.remove("js-playing");
 }
 
 //events
 
-window.addEventListener("keydown", listenKey);
-
 const keys = document.querySelectorAll(".key");
 keys.forEach((key) => key.addEventListener("transitionend", removeTransition));
+
+window.addEventListener("keydown", playSound);
