@@ -6,7 +6,6 @@
 
 function listenKey(e) {
   const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
-  console.log(key);
   const audio = document.querySelector(`.audio[data-key="${e.keyCode}"]`);
 
   if (!audio) {
@@ -26,7 +25,6 @@ function removeTransition(e) {
     return;
   } else {
     this.classList.remove("js-playing");
-    console.log("remove transition");
   }
 }
 
